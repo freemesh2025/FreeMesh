@@ -1,7 +1,6 @@
 import numpy as np
 import math
 from collections import defaultdict
-# 设置递归深度
 import sys
 sys.setrecursionlimit(1000000)
 
@@ -426,41 +425,4 @@ class Engine:
 
     def decode(self, tokens):
         vertices, faces, face_type = self.impl.decode(tokens)
-        return np.array(vertices), np.array(faces), np.array(face_type)
-
-
-# Example usage
-if __name__ == "__main__":
-    import trimesh
-
-    # Load a mesh from a file
-    mesh = trimesh.load_mesh('mesh.obj')
-    vertices, faces = mesh.vertices, mesh.faces
-    # 现将vertices归一化
-    vertices = (vertices - np.min(vertices, axis=0)) / (np.max(vertices, axis=0) - np.min(vertices, axis=0)) * 2 - 1
-
-    # Create a new mesh from the decoded data
-    new_mesh = trimesh.Trimesh(vertices=vertices, faces=faces)
-
-    # Save the new mesh to a file
-    new_mesh.export('old_mesh.obj')
-    print("Old mesh saved to 'old_mesh.obj'")          
-    
-    # Initialize the engine
-    engine = Engine(discrete_bins=128)
-
-    # Encode the mesh
-    tokens, face_order, face_type = engine.encode(vertices, faces)
-    print("Encoded tokens:", tokens)
-
-    # Decode the mesh
-    decoded_vertices, decoded_faces, decoded_face_type = engine.decode(tokens)
-    print("Decoded vertices:", decoded_vertices)
-    print("Decoded faces:", decoded_faces)
-
-    # Create a new mesh from the decoded data
-    new_mesh = trimesh.Trimesh(vertices=decoded_vertices, faces=decoded_faces)
-
-    # Save the new mesh to a file
-    new_mesh.export('new_mesh.obj')
-    print("New mesh saved to 'new_mesh.obj'")                          
+        return np.array(vertices), np.array(faces), np.array(face_type)                    
