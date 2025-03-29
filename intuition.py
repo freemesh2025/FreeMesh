@@ -1,19 +1,6 @@
 from collections import Counter
 import math
 
-A = 'aaabbb'
-vocab_a = {
-    'a': 'a',
-    'b': 'b',
-}
-
-B = 'XY' # X means aaa, Y means bbb
-vocab_b ={
-    'a': 'a',
-    'b': 'b',
-    'X': 'aaa',
-    'Y': 'bbb',
-}
 
 def entropy(s):
     total = 0
@@ -30,8 +17,73 @@ def avg_entropy(s, vocab):
     
     return original / avg_l
 
+
+################
+# Explain Why naive entropy is not enough
+
+A = 'aaabbb'
+vocab_a = {
+    'a': 'a',
+    'b': 'b',
+}
+
+B = 'XY' # X means aaa, Y means bbb
+vocab_b ={
+    'a': 'a',
+    'b': 'b',
+    'X': 'aaa',
+    'Y': 'bbb',
+}
+
+
 print(entropy(A)) # 1.0
 print(entropy(B)) # 1.0
 
 print(avg_entropy(A, vocab_a)) # 1.0
 print(avg_entropy(B, vocab_b)) # 0.5
+
+######################
+# Explain why naive Merge coordinate is not enough, it will increase the average entropy, 
+# But if we rearrange the data and then merge, it will decrease the average entropy.
+
+A = 'aadabbacc'
+vocab_a = {
+    'a': 'a',
+    'b': 'b',
+    'c': 'c',
+    'd': 'd',
+}
+
+B = 'Xdabbacc' # X means aa
+vocab_b ={
+    'a': 'a',
+    'b': 'b',
+    'c': 'c',
+    'd': 'd',
+    'X': 'aa',
+
+}
+
+C = 'aaaabcdbc' # rearrange A
+vocab_c ={
+    'a': 'a',
+    'b': 'b',
+    'c': 'c',
+    'd': 'd',
+}
+
+D = 'XXYdY' # X means aa, Y means bb
+vocab_d ={
+    'a': 'a',
+    'b': 'b',
+    'c': 'c',
+    'X': 'aa',
+    'Y': 'bb',
+}
+
+
+
+print(avg_entropy(A, vocab_a)) # baseline 1.837
+print(avg_entropy(B, vocab_b)) # + MC 1.875
+print(avg_entropy(C, vocab_c)) # + RAC 1.837  
+print(avg_entropy(D, vocab_d)) # + RMC 1.087 
