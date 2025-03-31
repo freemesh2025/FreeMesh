@@ -39,13 +39,10 @@ vocab_b ={
 print(entropy(A)) # 1.0
 print(entropy(B)) # 1.0
 
-print(avg_entropy(A, vocab_a)) # 1.0
+print(avg_entropy(A, vocab_a)) # 1.0 
 print(avg_entropy(B, vocab_b)) # 0.5
 
 ######################
-# Explain why naive Merge coordinate is not enough, it will increase the average entropy, 
-# But if we rearrange the data and then merge, it will decrease the average entropy.
-
 A = 'aadabbacc'
 vocab_a = {
     'a': 'a',

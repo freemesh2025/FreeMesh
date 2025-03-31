@@ -41,7 +41,7 @@ for serialization_type in serialization_type_list:
     vocab_size_list = vocab_size_mpt[serialization_type]
     for vocab_size in vocab_size_list:
         start = time.time()
-        model_path = os.path.join('/apdcephfs_cq5/share_300600172/jackjliu/code/meshgpt/bpe/bpe_model',f'tokenizer_bpe_{serialization_type}_{vocab_size}_split.model')
+        model_path = os.path.join('bpe/bpe_model',f'tokenizer_bpe_{serialization_type}_{vocab_size}_split.model')
         spm.SentencePieceTrainer.train(input=f'corpus/{name_mpt[serialization_type]}_train.txt', model_type='bpe', model_prefix=f'bpe_model/tokenizer_bpe_{serialization_type}_{vocab_size}_split', vocab_size=vocab_size, 
                                             character_coverage=1.0, user_defined_symbols=defined_symbols_mpt[serialization_type], max_sentence_length=65536, unk_id=0, bos_id=-1, eos_id=-1)
         print(f'{vocab_size} {time.time()-start} ') # ~2500
