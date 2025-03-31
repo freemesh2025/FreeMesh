@@ -8,7 +8,7 @@ from data.data_utils import decimal_to_chinese
 
 
 
-serialization_type_list = ['raw_mc','amt_mc','amt_mc','amt_rmc','edr_mc','edr_rmc']  
+serialization_type_list = ['raw_mc','raw_rmc','amt_mc','amt_rmc','edr_mc','edr_rmc']  
 
 defined_symbols_mpt = {
     'raw_mc': [],
