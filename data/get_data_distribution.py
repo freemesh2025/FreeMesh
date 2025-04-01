@@ -6,7 +6,7 @@ from multiprocessing import Pool
 from tqdm import tqdm
 import argparse
 import sys
-sys.path.append(os.getcwd()[:-3])  
+sys.path.append(os.getcwd()[:-4])  
 from data.data_utils import  decimal_to_chinese, load_process_mesh, to_mesh
 from data.serialization import serialize_meshxl, serialize_meshany, serialize_edgerunner
 import matplotlib.pyplot as plt
