@@ -9,7 +9,6 @@ import torch
 import sentencepiece as spm
 from data.edgerunner import Engine
 
-# Adapted from https://github.com/buaacyw/MeshAnythingV2/blob/main/adjacent_mesh_tokenization.py and https://github.com/NVlabs/EdgeRunner/blob/main/meto/include/meto/engine_lr_absco.h
 
 def rac_encode(nums):
     """RAC encode the number sequence"""

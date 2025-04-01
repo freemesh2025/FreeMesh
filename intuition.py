@@ -21,9 +21,7 @@ def avg_entropy(s, vocab):
     return naive_entropy / avg_l
 
 
-################
-# Explain Why naive entropy is not enough
-
+######################
 A = 'aaabbb'
 vocab_a = {
     'a': 'a',
