@@ -91,7 +91,7 @@ def make_args_parser():
 
 
 def main():
-    data_list = read_file_list('mesh_list.txt') # your mesh dataset
+    data_list = read_file_list('mesh_list.txt') # your filtered mesh dataset
     data_list = sorted(data_list)[:100]
     args = make_args_parser()
     global corpus_dir 
